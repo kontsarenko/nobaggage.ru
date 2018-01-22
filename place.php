@@ -1,10 +1,10 @@
 <?php
 
 $title ="Бангкок: как добраться, где остановиться, что делать";   
-$menu ="index";
+$menu ="place";
 
-include ("/cfg/header_place.php");
-include ("/cfg/connect.php");
+include ("cfg/header_place.php");
+include ("cfg/connect.php");
 
 ?>
 
