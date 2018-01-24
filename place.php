@@ -1,6 +1,6 @@
 <?php
 
-$title ="Бангкок: как добраться, где остановиться, что делать";   
+$title ="Бангкок: как добраться, где остановиться, что делать";
 $menu ="place";
 
 include ("cfg/header_place.php");
@@ -11,8 +11,8 @@ include ("cfg/connect.php");
 
 <?php
 
-	$id = (int) $_GET['id']; 
-	$results = mysql_query("SELECT id,place,summary FROM `places` WHERE `id`='" . $id . "'", $db);
+	$id = (int) $_GET['id'];
+	$results = mysqli_query("SELECT id,place,summary FROM `places` WHERE `id`='" . $id . "'", $db);
 	while ($row = mysql_fetch_assoc($results, MYSQL_BOTH)) {
 		printf("<h1>%s</h1><p>%s</p>", $row["place"], $row["summary"]);
 	}
@@ -25,7 +25,7 @@ include ("cfg/connect.php");
 
 <?php
 
-	$id = (int) $_GET['id']; 
+	$id = (int) $_GET['id'];
 	$results = mysql_query("SELECT id,place_id,url FROM `photos` WHERE `place_id`='" . $id . "' ORDER BY id ASC", $db);
 	while ($row = mysql_fetch_assoc($results, MYSQL_BOTH)) {
 		printf("<li><img src='%s'></li>", $row["url"]);
@@ -39,9 +39,9 @@ include ("cfg/connect.php");
 
 <hr>
 
-<?php	
+<?php
 
-	$id = (int) $_GET['id']; 
+	$id = (int) $_GET['id'];
 	$results = mysql_query("SELECT id,visa,fly,transfer,hotel,internet,money,todo,food,movies FROM `places` WHERE `id`='" . $id . "'", $db);
 	while ($row = mysql_fetch_assoc($results, MYSQL_BOTH)) {
 		printf("
@@ -72,15 +72,14 @@ include ("cfg/connect.php");
 				<dt>Фильмы 🎬</dt>
 				<dd>%s</dd>
 			</dl>
-			 ", $row["visa"], $row["fly"], $row["transfer"], 
-			 $row["hotel"], $row["internet"], $row["money"], 
+			 ", $row["visa"], $row["fly"], $row["transfer"],
+			 $row["hotel"], $row["internet"], $row["money"],
 			 $row["todo"], $row["food"], $row["movies"]);
 	}
 	mysql_free_result($results);
 
 ?>
 
-<?php 
+<?php
 include ("cfg/footer_place.php");
 ?>
-
