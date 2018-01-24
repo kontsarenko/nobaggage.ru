@@ -13,10 +13,10 @@ include ("cfg/connect.php");
 
 	$id = (int) $_GET['id'];
 	$results = mysqli_query("SELECT id,place,summary FROM `places` WHERE `id`='" . $id . "'", $db);
-	while ($row = mysql_fetch_assoc($results, MYSQL_BOTH)) {
+	while ($row = mysqli_fetch_assoc($results, MYSQL_BOTH)) {
 		printf("<h1>%s</h1><p>%s</p>", $row["place"], $row["summary"]);
 	}
-	mysql_free_result($results);
+	mysqli_free_result($results);
 
 ?>
 
@@ -26,11 +26,11 @@ include ("cfg/connect.php");
 <?php
 
 	$id = (int) $_GET['id'];
-	$results = mysql_query("SELECT id,place_id,url FROM `photos` WHERE `place_id`='" . $id . "' ORDER BY id ASC", $db);
-	while ($row = mysql_fetch_assoc($results, MYSQL_BOTH)) {
+	$results = mysqli_query("SELECT id,place_id,url FROM `photos` WHERE `place_id`='" . $id . "' ORDER BY id ASC", $db);
+	while ($row = mysqli_fetch_assoc($results, MYSQL_BOTH)) {
 		printf("<li><img src='%s'></li>", $row["url"]);
 	}
-	mysql_free_result($results);
+	mysqli_free_result($results);
 
 ?>
 
@@ -42,8 +42,8 @@ include ("cfg/connect.php");
 <?php
 
 	$id = (int) $_GET['id'];
-	$results = mysql_query("SELECT id,visa,fly,transfer,hotel,internet,money,todo,food,movies FROM `places` WHERE `id`='" . $id . "'", $db);
-	while ($row = mysql_fetch_assoc($results, MYSQL_BOTH)) {
+	$results = mysqli_query("SELECT id,visa,fly,transfer,hotel,internet,money,todo,food,movies FROM `places` WHERE `id`='" . $id . "'", $db);
+	while ($row = mysqli_fetch_assoc($results, MYSQL_BOTH)) {
 		printf("
 				<dl class='dl-horizontal place_tip'>
 				<dt>Виза 📃</dt><dd>%s</dd>
@@ -76,7 +76,7 @@ include ("cfg/connect.php");
 			 $row["hotel"], $row["internet"], $row["money"],
 			 $row["todo"], $row["food"], $row["movies"]);
 	}
-	mysql_free_result($results);
+	mysqli_free_result($results);
 
 ?>
 
