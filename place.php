@@ -42,7 +42,7 @@ include ("cfg/connect.php");
 <?php
 
 	$id = (int) $_GET['id'];
-	$results = mysqli_query("SELECT id,visa,fly,transfer,hotel,internet,money,todo,food,movies FROM `places` WHERE `id`='" . $id . "'", $db);
+	$results = mysqli_query("SELECT id,visa,fly,transfer,hotel,internet,money,todo,food,movies FROM `places` WHERE `id`='" . $id . "'", $db) or trigger_error(mysqli_error());
 	while ($row = mysqli_fetch_assoc($results, MYSQL_BOTH)) {
 		printf("
 				<dl class='dl-horizontal place_tip'>
