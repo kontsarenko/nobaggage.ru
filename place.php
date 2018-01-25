@@ -16,7 +16,11 @@ include ("cfg/connect.php");
 	while ($row = mysqli_fetch_assoc($results, MYSQLI_BOTH)) {
 		printf("<h1>%s</h1><p>%s</p>", $row["place"], $row["summary"]);
 	}
-	mysqli_free_result($results);
+
+	if((isset($result) && is_resource($result)){
+		// 4. Release returned data
+		mysqli_free_result($result);
+	}
 
 ?>
 
