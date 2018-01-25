@@ -17,7 +17,7 @@ include ("cfg/connect.php");
 		printf("<h1>%s</h1><p>%s</p>", $row["place"], $row["summary"]);
 	}
 
-	if((isset($result) && is_resource($result)){
+	if(isset($result) && $result!=null){
 		// 4. Release returned data
 		mysqli_free_result($result);
 	}
