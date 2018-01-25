@@ -19,7 +19,7 @@ include ("cfg/connect.php");
 
 	if(isset($result) && $result!=null){
 		// 4. Release returned data
-		mysqli_free_result($result);
+		mysqli_free_result($result)
 	}
 
 ?>
