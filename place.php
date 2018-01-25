@@ -16,6 +16,7 @@ include ("cfg/connect.php");
 	while ($row = mysqli_fetch_assoc($results, MYSQLI_BOTH)) {
 		printf("<h1>%s</h1><p>%s</p>", $row["place"], $row["summary"]);
 	}
+	mysqli_free_result($results);
 
 ?>
 
@@ -29,6 +30,7 @@ include ("cfg/connect.php");
 	while ($row = mysqli_fetch_assoc($results, MYSQLI_BOTH)) {
 		printf("<li><img src='%s'></li>", $row["url"]);
 	}
+	mysqli_free_result($results);
 
 ?>
 
@@ -74,6 +76,7 @@ include ("cfg/connect.php");
 			 $row["hotel"], $row["internet"], $row["money"],
 			 $row["todo"], $row["food"], $row["movies"]);
 	}
+	mysqli_free_result($results);
 
 ?>
 
