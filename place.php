@@ -9,7 +9,7 @@ include ("cfg/connect.php");
 ?>
 
 
-<!-- <?php
+<?php
 
 	$id = (int) $_GET['id'];
 	$results = mysqli_query("SELECT id,place,summary FROM `places` WHERE `id`='" . $id . "'", $db);
@@ -18,16 +18,6 @@ include ("cfg/connect.php");
 	}
 	mysqli_free_result($results);
 
-?> -->
-
-<?php
-
-$result=mysql_query('SELECT * FROM `places`'); // запрос на выборку
-
-while($row=mysql_fetch_array($result))
-{
-echo '<h1>'.$row['place'].'</h1>';// выводим данные
-}
 ?>
 
 <div class='slider'>
