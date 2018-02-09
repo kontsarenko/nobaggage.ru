@@ -13,11 +13,12 @@ include ("cfg/connect.php");
 
 	$id = (int) $_GET['id'];
 	$results = mysqli_query("SELECT id,place,summary FROM `places` WHERE `id`='" . $id . "'", $db);
-	while ($row = mysqli_fetch_assoc($results)) {
-		printf("<h1>%s</h1><p>%s</p>", $row["place"], $row["summary"]);
+	if (!is_null($result)) {
+		while ($row = mysqli_fetch_assoc($results)) {
+			printf("<h1>%s</h1><p>%s</p>", $row["place"], $row["summary"]);
+		}
+		mysqli_free_result($results);
 	}
-	mysqli_free_result($results);
-
 ?>
 
 <div class='slider'>
@@ -27,10 +28,12 @@ include ("cfg/connect.php");
 
 	$id = (int) $_GET['id'];
 	$results = mysqli_query("SELECT id,place_id,url FROM `photos` WHERE `place_id`='" . $id . "' ORDER BY id ASC", $db);
-	while ($row = mysqli_fetch_assoc($results, MYSQLI_BOTH)) {
-		printf("<li><img src='%s'></li>", $row["url"]);
+	if (!is_null($result)) {
+		while ($row = mysqli_fetch_assoc($results, MYSQLI_BOTH)) {
+			printf("<li><img src='%s'></li>", $row["url"]);
+		}
+		mysqli_free_result($results);
 	}
-	mysqli_free_result($results);
 
 ?>
 
@@ -43,40 +46,42 @@ include ("cfg/connect.php");
 
 	$id = (int) $_GET['id'];
 	$results = mysqli_query("SELECT id,visa,fly,transfer,hotel,internet,money,todo,food,movies FROM `places` WHERE `id`='" . $id . "'", $db);
-	while ($row = mysqli_fetch_assoc($results, MYSQLI_BOTH)) {
-		printf("
-				<dl class='dl-horizontal place_tip'>
-				<dt>Виза 📃</dt><dd>%s</dd>
-				<hr>
-				<dt>Как добраться ✈️</dt>
-				<dd>%s</dd>
-				<hr>
-				<dt>Из аэропорта 🚊</dt>
-				<dd>%s</dd>
-				<hr>
-				<dt>Отель 🏨</dt>
-				<dd>%s</dd>
-				<hr>
-				<dt>Интернет 📱</dt>
-				<dd>%s</dd>
-				<hr>
-				<dt>Валюта 💵</dt>
-				<dd>%s</dd>
-				<hr>
-				<dt>Что делать 👀</dt>
-				<dd>%s</dd>
-				<hr>
-				<dt>Еда 🍲</dt>
-				<dd>%s</dd>
-				<hr>
-				<dt>Фильмы 🎬</dt>
-				<dd>%s</dd>
-			</dl>
-			 ", $row["visa"], $row["fly"], $row["transfer"],
-			 $row["hotel"], $row["internet"], $row["money"],
-			 $row["todo"], $row["food"], $row["movies"]);
+	if (!is_null($result)) {
+		while ($row = mysqli_fetch_assoc($results, MYSQLI_BOTH)) {
+			printf("
+					<dl class='dl-horizontal place_tip'>
+					<dt>Виза 📃</dt><dd>%s</dd>
+					<hr>
+					<dt>Как добраться ✈️</dt>
+					<dd>%s</dd>
+					<hr>
+					<dt>Из аэропорта 🚊</dt>
+					<dd>%s</dd>
+					<hr>
+					<dt>Отель 🏨</dt>
+					<dd>%s</dd>
+					<hr>
+					<dt>Интернет 📱</dt>
+					<dd>%s</dd>
+					<hr>
+					<dt>Валюта 💵</dt>
+					<dd>%s</dd>
+					<hr>
+					<dt>Что делать 👀</dt>
+					<dd>%s</dd>
+					<hr>
+					<dt>Еда 🍲</dt>
+					<dd>%s</dd>
+					<hr>
+					<dt>Фильмы 🎬</dt>
+					<dd>%s</dd>
+				</dl>
+				 ", $row["visa"], $row["fly"], $row["transfer"],
+				 $row["hotel"], $row["internet"], $row["money"],
+				 $row["todo"], $row["food"], $row["movies"]);
+		}
+		mysqli_free_result($results);
 	}
-	mysqli_free_result($results);
 
 ?>
 
