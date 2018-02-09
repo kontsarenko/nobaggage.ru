@@ -13,6 +13,7 @@ include ("cfg/connect.php");
 
 	$id = (int) $_GET['id'];
 	$results = mysqli_query($db, "SELECT id,place,summary FROM `places` WHERE `id`='" . $id . "'");
+	var_dump($results);
 	if (!is_null($results)) {
 		while ($row = mysqli_fetch_assoc($results)) {
 			printf("<h1>%s</h1><p>%s</p>", $row["place"], $row["summary"]);
