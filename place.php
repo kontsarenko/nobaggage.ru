@@ -12,7 +12,7 @@ include ("cfg/connect.php");
 <?php
 
 	$id = (int) $_GET['id'];
-	$results = mysqli_query("SELECT id,place,summary FROM `places` WHERE `id`='" . $id . "'", $db);
+	$results = mysqli_query($db, "SELECT id,place,summary FROM `places` WHERE `id`='" . $id . "'");
 	if (!is_null($results)) {
 		while ($row = mysqli_fetch_assoc($results)) {
 			printf("<h1>%s</h1><p>%s</p>", $row["place"], $row["summary"]);
@@ -27,7 +27,7 @@ include ("cfg/connect.php");
 <?php
 
 	$id = (int) $_GET['id'];
-	$results = mysqli_query("SELECT id,place_id,url FROM `photos` WHERE `place_id`='" . $id . "' ORDER BY id ASC", $db);
+	$results = mysqli_query($db, "SELECT id,place_id,url FROM `photos` WHERE `place_id`='" . $id . "' ORDER BY id ASC");
 	if (!is_null($results)) {
 		while ($row = mysqli_fetch_assoc($results, MYSQLI_BOTH)) {
 			printf("<li><img src='%s'></li>", $row["url"]);
@@ -47,7 +47,7 @@ include ("cfg/connect.php");
 <?php
 
 	$id = (int) $_GET['id'];
-	$results = mysqli_query("SELECT id,visa,fly,transfer,hotel,internet,money,todo,food,movies FROM `places` WHERE `id`='" . $id . "'", $db);
+	$results = mysqli_query($db, "SELECT id,visa,fly,transfer,hotel,internet,money,todo,food,movies FROM `places` WHERE `id`='" . $id . "'");
 	if (!is_null($results)) {
 		while ($row = mysqli_fetch_assoc($results, MYSQLI_BOTH)) {
 			printf("
