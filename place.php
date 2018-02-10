@@ -29,6 +29,7 @@ include ("cfg/connect.php");
 
 	$id = (int) $_GET['id'];
 	$results = mysqli_query($db, "SELECT id,place_id,url FROM `photos` WHERE `place_id`='" . $id . "' ORDER BY id ASC");
+	var_dump($results);
 	if (!is_null($results)) {
 		while ($row = mysqli_fetch_assoc($results, MYSQLI_BOTH)) {
 			printf("<li><img src='%s'></li>", $row["url"]);
@@ -49,6 +50,7 @@ include ("cfg/connect.php");
 
 	$id = (int) $_GET['id'];
 	$results = mysqli_query($db, "SELECT id,visa,fly,transfer,hotel,internet,money,todo,food,movies FROM `places` WHERE `id`='" . $id . "'");
+	var_dump($results);
 	if (!is_null($results)) {
 		while ($row = mysqli_fetch_assoc($results, MYSQLI_BOTH)) {
 			printf("
